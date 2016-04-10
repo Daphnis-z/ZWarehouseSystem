@@ -1,0 +1,64 @@
+﻿<Window x:Class="ZWarehouseSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="仓库管理系统" Height="500" Width="809" ResizeMode="NoResize" WindowStyle="None" 
+        AllowsTransparency="True" Background="{x:Null}" Initialized="Window_Initialized"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown" WindowStartupLocation="CenterScreen">
+
+    <Border BorderBrush="#FF37B208" BorderThickness="1" CornerRadius="2">
+        <Border.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF37B208" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+                <GradientStop Color="#FF63C33E" Offset="0.108"/>
+                <GradientStop Color="White" Offset="0.12"/>
+            </LinearGradientBrush>
+        </Border.Background>
+        <Grid>
+            <Label Content="仓库管理系统" HorizontalAlignment="Center" Margin="356,10,324,0" 
+                VerticalAlignment="Top" Foreground="White" FontSize="19" Width="127" FontWeight="Bold"/>
+            <Label x:Name="LabExit" Content="X" HorizontalAlignment="Right" Margin="0,6,6,0" 
+                VerticalAlignment="Top" Foreground="White" FontSize="17" 
+                MouseLeftButtonDown="LabExit_MouseLeftButtonDown" ToolTip="关闭程序"/>
+            <Label x:Name="LabMin" Content="—" HorizontalAlignment="Right" Margin="0,5,35,0" 
+            	VerticalAlignment="Top" Foreground="White" FontSize="15" 
+            	MouseLeftButtonDown="LabMin_MouseLeftButtonDown" FontWeight="Bold" ToolTip="最小化"/>
+
+            <!--用于调整窗体大小-->
+            <Rectangle HorizontalAlignment="Right" Margin="414,0,0,0" Stroke="Black" Width="5" StrokeThickness="0"
+                       Cursor="SizeWE" Fill="Transparent"
+                       MouseLeftButtonDown="Window_ReadyForChangeSize"
+                       MouseMove="Window_Widen"
+                       MouseLeftButtonUp="Window_EndChangeSize"
+                       />
+            <Rectangle VerticalAlignment="Bottom" Stroke="Black" Height="5" StrokeThickness="0"
+                       Cursor="SizeNS" Fill="Transparent"
+                       MouseLeftButtonDown="Window_ReadyForChangeSize"
+                       MouseMove="Window_Heighten"
+                       MouseLeftButtonUp="Window_EndChangeSize"
+                       />
+
+            <DataGrid x:Name="DataGridProducts" Margin="5,75,5,59" FontSize="14" AutoGenerateColumns="False">
+                <DataGrid.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="添加纪录" Click="Add_MenuItem_Click"/>
+                        <MenuItem Header="删除记录" Click="Remove_MenuItem_Click"/>
+                        <MenuItem Header="生成订货单" Click="BookList_MenuItem_Click"/>
+                        <MenuItem Header="生成销售统计表" Click="SaleSta_MenuItem_Click"/>
+                    </ContextMenu>
+                </DataGrid.ContextMenu>
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="商品编号" Binding="{Binding Num}"/>
+                    <DataGridTextColumn Header="商品名称" Binding="{Binding ProductName}"/>
+                    <DataGridTextColumn Header="生产商" Binding="{Binding Producer}"/>
+                    <DataGridTextColumn Header="分类" Binding="{Binding Category}"/>
+                    <DataGridTextColumn Header="库存数量" Binding="{Binding LeftNum}"/>
+                    <DataGridTextColumn Header="已售出数量" Binding="{Binding SaleNum}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="BtnApply" Content="更新数据库" HorizontalAlignment="Left" Margin="5,0,0,29" VerticalAlignment="Bottom" Width="75" Click="BtnApply_Click"/>
+            <Button x:Name="BtnUserManage" Content="管理账户" HorizontalAlignment="Left" Margin="102,0,0,29" VerticalAlignment="Bottom" Width="75" Click="BtnUserManage_Click"/>
+        </Grid>
+
+    </Border>
+</Window>

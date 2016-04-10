@@ -1,0 +1,10 @@
+﻿<Application x:Class="ZWarehouseSystem.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <SolidColorBrush x:Key="GreenCommon" Color="#FF37B208"/>
+
+    </Application.Resources>
+</Application>
